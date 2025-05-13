@@ -1,0 +1,41 @@
+# dependencies
+node_modules/
+
+# builds
+dist/
+build/
+web-build/
+
+# environment
+.env
+.env*.local
+
+# Expo
+.expo/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# OS / system files
+.DS_Store
+*.pem
+
+# TypeScript
+*.tsbuildinfo
+
+# Learn more: https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
