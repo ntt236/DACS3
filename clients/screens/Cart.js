@@ -66,8 +66,8 @@ const CartScreen = () => {
         <>
 
             <ScrollView contentContainerStyle={styles.container}>
-                {cartItems?.items?.map((item) => (
-                    <View key={item?.id} style={styles.itemContainer}>
+                {cartItems?.items?.map((item, index) => (
+                    <View key={index} style={styles.itemContainer}>
                         <Image source={{ uri: item.image }} style={styles.image} />
                         <View style={styles.details}>
                             <Text style={styles.title}>{item.title}</Text>

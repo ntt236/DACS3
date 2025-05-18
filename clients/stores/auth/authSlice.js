@@ -33,6 +33,7 @@ export const logoutUser = createAsyncThunk('/auth/logout', async () => {
     return { success: true };
 });
 
+
 export const checkAuth = createAsyncThunk('/auth/check-auth', async () => {
     const token = await AsyncStorage.getItem('token');
     if (!token) {

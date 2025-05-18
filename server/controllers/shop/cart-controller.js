@@ -247,4 +247,23 @@ const deleteCart = async (req, res) => {
     }
 };
 
-module.exports = { addToCart, fetchCart, deleteCart, updateCart }
+const clearCartByUser = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const cart = await Cart.findOne({ userId });
+
+        if (!cart) {
+            return res.status(404).json({ message: 'Không tìm thấy giỏ hàng.' });
+        }
+
+        cart.items = []; // xoá hết sản phẩm
+        await cart.save();
+
+        res.status(200).json({ message: 'Đã xoá toàn bộ giỏ hàng.', data: cart });
+    } catch (error) {
+        console.log("🚀 ~ clearCartByUser ~ error:", error);
+        res.status(500).json({ message: 'Lỗi server', error });
+    }
+};
+
+module.exports = { addToCart, fetchCart, deleteCart, updateCart, clearCartByUser }

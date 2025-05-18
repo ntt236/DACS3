@@ -64,7 +64,7 @@ const ProductCard = () => {
                             <Text style={styles.cardDesc}>
                                 {item.brand}
                             </Text>
-                            <Text style={{}}>{item.price}</Text>
+                            <Text style={{}}>{item.salePrice || item.price}$</Text>
                         </View>
 
                         <View style={styles.BtnContainer}>

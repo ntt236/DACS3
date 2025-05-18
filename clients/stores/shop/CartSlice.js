@@ -52,6 +52,12 @@ export const deleteCart = createAsyncThunk("cart/deleteCart", async ({ userId, p
     return response?.data
 })
 
+// clear cart
+export const clearCartOnServer = createAsyncThunk("cart/clearCartOnServer", async (userId) => {
+    const response = await axios.delete(`http://10.0.2.2:5000/api/shop/cart/clear-cart/${userId}`);
+    return response?.data;
+});
+
 
 
 
@@ -60,7 +66,11 @@ export const deleteCart = createAsyncThunk("cart/deleteCart", async ({ userId, p
 const shopCartSlice = createSlice({
     name: 'shopCart',
     initialState,
-    reducers: {},
+    reducers: {
+        clearCart: (state, action) => {
+            state.cartItems = []
+        }
+    },
     extraReducers: (builder) => {
         builder.
             // thêm
@@ -114,9 +124,21 @@ const shopCartSlice = createSlice({
                 state.isLoading = false;
                 state.cartItems = []
             })
-
+            //clear
+            .addCase(clearCartOnServer.pending, state => {
+                state.isLoading = true;
+            })
+            .addCase(clearCartOnServer.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.cartItems = []
+            })
+            .addCase(clearCartOnServer.rejected, (state, action) => {
+                state.isLoading = false;
+                state.cartItems = []
+            })
 
     }
 })
+export const { clearCart } = shopCartSlice.actions;
 
 export default shopCartSlice.reducer

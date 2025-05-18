@@ -4,7 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import AntDesign from "react-native-vector-icons/AntDesign"
 import { logoutUser } from '../../stores/auth/authSlice';
-const Footer = () => {
+const FooterAdmin = () => {
 
     const route = useRoute();
     const navigation = useNavigation();
@@ -14,47 +14,47 @@ const Footer = () => {
         <View style={styles.container}>
             <TouchableOpacity
                 style={styles.menuContainer}
-                onPress={() => navigation.navigate("home")}
+                onPress={() => navigation.navigate("Admin")}
             >
                 <AntDesign
-                    style={[styles.icon, route.name === "home" && styles.active]}
+                    style={[styles.icon, route.name === "Admin" && styles.active]}
                     name="home"
                 />
-                <Text style={[styles.iconText, route.name === "home" && styles.active]}>
-                    Home
+                <Text style={[styles.iconText, route.name === "Admin" && styles.active]}>
+                    Product
                 </Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.menuContainer}
-                onPress={() => navigation.navigate("notifications")}
+                onPress={() => navigation.navigate("Order")}
             >
                 <AntDesign
-                    style={[styles.icon, route.name === "notifications" && styles.active]}
+                    style={[styles.icon, route.name === "Order" && styles.active]}
                     name="bells"
                 />
                 <Text
                     style={[
                         styles.iconText,
-                        route.name === "notifications" && styles.active,
+                        route.name === "Order" && styles.active,
                     ]}
                 >
-                    notification
+                    OrderDetails
                 </Text>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
                 style={styles.menuContainer}
-                onPress={() => navigation.navigate("Account")}
+                onPress={() => navigation.navigate("account")}
             >
                 <AntDesign
-                    style={[styles.icon, route.name === "Account" && styles.active]}
+                    style={[styles.icon, route.name === "account" && styles.active]}
                     name="user"
                 />
                 <Text
-                    style={[styles.iconText, route.name === "Account" && styles.active]}
+                    style={[styles.iconText, route.name === "account" && styles.active]}
                 >
                     Account
                 </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity
                 style={styles.menuContainer}
                 onPress={() => {
@@ -74,7 +74,8 @@ const Footer = () => {
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        bottom: 10,
+        bottom: 35,
+        marginTop: 10,
         left: 20,
         right: 20,
         flexDirection: 'row',
@@ -109,4 +110,4 @@ const styles = StyleSheet.create({
     },
 
 });
-export default Footer
+export default FooterAdmin

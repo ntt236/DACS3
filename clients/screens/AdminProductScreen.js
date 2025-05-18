@@ -17,6 +17,7 @@ import AdminProductTile from "../components/admin/ProductTile";
 import ProductImageUpload from "../components/admin/ImageUpload"
 import Footer from "../components/Layouts/Footer";
 import { addProductFormElements } from "../config";
+import FooterAdmin from "../components/Layouts/FooterAdmin";
 
 const initialFormData = {
     image: "",
@@ -201,7 +202,7 @@ const AdminProducts = () => {
                     </View>
                 </View>
             </Modal>
-            <Footer />
+            <FooterAdmin />
         </SafeAreaView>
     );
 };
@@ -210,6 +211,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
+        marginTop: 40,
     },
     addButton: {
         backgroundColor: "#00C853",
